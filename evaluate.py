@@ -28,7 +28,7 @@ warnings.filterwarnings("ignore")
 # =====================================================================
 TRACKING_URI = "http://127.0.0.1:5000"
 EXPERIMENT_NAME = "hf-sentiment-champion-challenger"
-STUDENT_USN = "1MS24XX000"  # <-- Replace with your MSRIT USN
+STUDENT_USN = "1MS25CI035"  
 SEED = 42
 EVAL_SAMPLES = 200
 MAX_LENGTH = 128
@@ -127,7 +127,7 @@ def load_and_save_eval_data() -> pd.DataFrame:
         return pd.read_csv(eval_path)
 
     print("Downloading GLUE SST-2 validation split and sampling 200 items...")
-    ds = load_dataset("glue", "sst2", split="validation")
+    ds = load_dataset("nyu-mll/glue", "sst2", split="validation")
     ds_sampled = ds.shuffle(seed=SEED).select(range(EVAL_SAMPLES))
 
     df = pd.DataFrame(
